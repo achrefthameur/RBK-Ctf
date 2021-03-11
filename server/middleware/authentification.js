@@ -43,5 +43,23 @@ module.exports = {
             res.status(200).send('Session Login Fail')
         }
        
+    },
+    VerifyAdminSession : (req,res,next)=>{
+        if(req.cookies.RBKCTFAdmin){
+            models.session.Get(req.cookies.RBKCTFAdmin)
+                .then((result)=>{
+                    if(result.length >0 && (result[0].date > Date.now()) && result[0].id == 0){
+                        res.render('Dashboard')
+                    }else{
+                        res.render('adminLogin')
+                    }
+                })
+                .catch((err)=>{
+                    res.status(500).send('Server Error') 
+                })
+        }else{
+            res.render('adminLogin')
+        }
+       
     }
 } 

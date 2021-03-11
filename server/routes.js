@@ -17,7 +17,7 @@ router.post('/api/solve',controller.solvers.Create)
 
 
 router.get('/admin',(req,res)=>{
-    res.render('adminLogin')
+    
 })
 
 module.exports = router
