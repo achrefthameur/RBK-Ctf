@@ -3,7 +3,7 @@ const connection = require('../database')
 module.exports={
         Get:(session)=>{
                 return new Promise((resolve,reject)=>{
-                    connection.query('select * from sessions where session=?',
+                    connection.query('select teams.*,sessions.date from sessions where session=? INNER JOIN teams ON teams.id = sessions.Team_id',
                     [session],
                     (err,result)=>{
                         if(err) return reject(err)
