@@ -20,5 +20,15 @@ module.exports={
                     return resolve(result)
                 })
             })
+        },
+        delete:(session)=>{
+            return new Promise((resolve,reject)=>{
+                connection.query('DELETE from sessions where session = ?',
+                [session],
+                (err,result)=>{
+                    if(err) return reject(err)
+                    return resolve(result)
+                })
+            })
         }
 }

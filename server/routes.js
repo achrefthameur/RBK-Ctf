@@ -5,8 +5,8 @@ const router  = require('express').Router();
 
 router.post('/api/login',controller.Login.login);
 router.post('/api/register',controller.teams.CreateTeam);
+router.get('/api/logout',controller.Login.logout)
 
-router.get('/api/session',middleware.authentification.VerifySession)
 
 router.get('/api/scoardBoard',controller.teams.GetTop);
 
@@ -16,8 +16,7 @@ router.post('/api/challanges',controller.challanges.Post);
 router.post('/api/solve',controller.solvers.Create)
 
 
-router.get('/admin',(req,res)=>{
-    
-})
+router.get('/api/session',middleware.authentification.VerifySession)
+router.get('/admin',middleware.authentification.VerifyAdminSession)
 
 module.exports = router

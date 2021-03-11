@@ -18,5 +18,15 @@ module.exports = {
             .catch((err)=>{
                 res.status(500).send('Server Error')
             })
+    },
+    logout : (req,res)=>{
+        models.session.delete(req.cookies.RBKCTF)
+            .then((result)=>{
+                res.clearCookie('RBKCTF');
+                res.redirect('/');
+            })
+            .catch((err)=>{
+                res.status(500).send('Server Error')
+            })
     }
 }
