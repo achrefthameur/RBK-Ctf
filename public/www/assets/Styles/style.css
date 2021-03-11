@@ -1,0 +1,33 @@
+body{
+    color: white;
+    background-color: #171717;
+    height: 100%;
+    position:relative ;
+     overflow:hidden; 
+}
+
+.Nav-Container{
+    background-color: transparent;
+    height: 8em;
+    padding-top: 12px;
+}
+
+.NavBar-item{
+    font-family: "Gill Sans Extrabold", sans-serif;
+    color:white;
+    font-size: 16px;
+    font-weight: 10;
+    
+}
+
+.NavBar-item:hover {
+    color:#CF202A;
+}
+
+.navbar-brand{
+    margin-left: 10%;
+}
+
+.navbar-rightCh{
+    margin-left: 40%;
+}
