@@ -36,7 +36,7 @@ CREATE TABLE sessions(
     id int NOT NULL AUTO_INCREMENT,
     Team_id int NOT NULL ,
     session varchar(250) NOT NULL,
-    date DATE NOT NULL,
+    date varchar(255) NOT NULL,
     FOREIGN KEY (Team_id) References teams(id)
 )
 
