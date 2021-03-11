@@ -2,15 +2,15 @@ const models = require('../models')
 
 
 module.exports = {
-    CreateSession : (req,res,TeamInfo,session)=>{
-            models.session.post(TeamInfo.id,session)
+    CreateSession : (req,res,team_id,session)=>{
+            models.session.post(team_id,session)
                 .then((result)=>{
                     res.cookie('RBKCTF', session,{
                         maxAge: 86400 * 1000, 
                         httpOnly: false, 
                         secure: false
                     })
-                    res.status(200).send(TeamInfo)
+                    res.status(200).redirect('/')
                 })
                 .catch((err)=>{
                     res.status(500).send('Server Error')
@@ -45,8 +45,8 @@ module.exports = {
        
     },
     VerifyAdminSession : (req,res,next)=>{
-        if(req.cookies.RBKCTFAdmin){
-            models.session.Get(req.cookies.RBKCTFAdmin)
+        if(req.cookies.RBKCTF){
+            models.session.Get(req.cookies.RBKCTF)
                 .then((result)=>{
                     if(result.length >0 && (result[0].date > Date.now()) && result[0].id == 0){
                         res.render('Dashboard')
