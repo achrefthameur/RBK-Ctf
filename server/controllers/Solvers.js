@@ -10,6 +10,7 @@ module.exports={
                     res.status(200).send('Correct')
                 })
                 .catch((err)=>{
+                    console.log(err)
                     res.status(500).send('Server Error')
                 })
             }else{

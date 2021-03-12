@@ -14,7 +14,6 @@ class ScoarBoard extends React.Component{
             type:'GET',
             contentType:'application/json',
             success:(teams)=>{
-                console.log(teams)
                 this.setState({TopTeams:teams})
             }
         })

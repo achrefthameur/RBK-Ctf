@@ -21,6 +21,7 @@ class Login extends React.Component{
             success:(result)=>{
                 if(String(result).includes('success')){
                     this.setState({alert:'success'})
+                    setTimeout(()=>location.reload(),1000)
                 }else{
                     this.setState({alert:'fail'})
                 }

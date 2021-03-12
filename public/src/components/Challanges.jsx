@@ -5,10 +5,13 @@ class Challanges extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            challanges : []
+            challanges : [],
+            flag:'',
+            challange_id:0
         }
     }
     ChallangePopUp(challange){
+        this.setState({challange_id:challange.id})
         $('#TitlePopUp').html(challange.Challange_name)
         $('#challangeHint').html(challange.Hint)
         $('#challangeDifficulty').html(challange.Difficulty)
@@ -18,6 +21,19 @@ class Challanges extends React.Component{
         $("#Challalink").attr("href",challange.Challange_Link)
         $('#ModalPop').modal('show');
     }
+    SubmiFlag(){
+        const {challanges,flag,challange_id} = this.state
+        const {user_id} = this.props
+        $.ajax({
+            url:'/api/solve',
+            type:'POST',
+            contentType:'application/json',
+            data:JSON.stringify({team_id:user_id,challange_id:challange_id,Flag:flag}),
+            success:(result)=>{
+                    console.log(result)
+            }
+        })
+    }
 
     componentDidMount(){
         $.ajax({
@@ -25,7 +41,6 @@ class Challanges extends React.Component{
             type:'GET',
             contentType:'application/json',
             success:(challanges)=>{
-                console.log(challanges)
                 this.setState({challanges:challanges})
             }
         })
@@ -45,8 +60,8 @@ class Challanges extends React.Component{
                     </div>
                     <div className="Challanges-cards container">
                         <div className="row">
-                            {challanges.map((challange)=>{
-                               return (challange.type == 'Network') ?     <div className="col-sm Challange-card" onClick={()=>this.ChallangePopUp(challange)}>
+                            {challanges.map((challange,i)=>{
+                               return (challange.type == 'Network') ?     <div className="col-sm Challange-card" onClick={()=>this.ChallangePopUp(challange)} key={i}>
                                 <div className="card">
                                         <h5 className="card-header text-center Card-challange-header">{challange.Challange_name}</h5>
                                         <div className="card-body">
@@ -72,8 +87,8 @@ class Challanges extends React.Component{
                     </div>
                     <div className="Challanges-cards container">
                         <div className="row">
-                            {challanges.map((challange)=>{
-                               return (challange.type == 'Forensic') ?    <div className="col-sm Challange-card" onClick={()=>this.ChallangePopUp(challange)}>
+                            {challanges.map((challange,i)=>{
+                               return (challange.type == 'Forensic') ?    <div className="col-sm Challange-card" onClick={()=>this.ChallangePopUp(challange)} key={i}>
                                 <div className="card">
                                         <h5 className="card-header text-center Card-challange-header">{challange.Challange_name}</h5>
                                         <div className="card-body">
@@ -99,8 +114,8 @@ class Challanges extends React.Component{
                     </div>
                     <div className="Challanges-cards container">
                         <div className="row">
-                            {challanges.map((challange)=>{
-                               return (challange.type == 'Web') ?    <div className="col-sm Challange-card" onClick={()=>this.ChallangePopUp(challange)} >
+                            {challanges.map((challange,i)=>{
+                               return (challange.type == 'Web') ?    <div className="col-sm Challange-card" onClick={()=>this.ChallangePopUp(challange)} key={i} >
                                 <div className="card">
                                         <h5 className="card-header text-center Card-challange-header">{challange.Challange_name}</h5>
                                         <div className="card-body">
@@ -123,8 +138,8 @@ class Challanges extends React.Component{
                         <div className="modal-content">
                         <div className="modal-header ">
                             <h5 className="modal-title " id="TitlePopUp">Modal title</h5>
-                            <button type="button" className="close CloseButton" data-dismiss="modal" ariaLabel="Close">
-                            <span ariaHidden="true">&times;</span>
+                            <button type="button" className="close CloseButton" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div className="modal-body">
@@ -135,7 +150,7 @@ class Challanges extends React.Component{
                                  
                                 Author  : <span id='challangeAuthor'></span><br />
                                 <div style={{marginLeft:'35%',fontSize:'22px',color:'white'}}><span id='challangepoints'  ></span> Points </div>
-                                <input placeholder="FlAG_H3r3" id='FlagInput'/><button type="button" style={{marginLeft:'10px'}} className="btn btn-danger"  >Submit</button>
+                                <input placeholder="FlAG_H3r3" id='FlagInput' onChange={(e)=>this.setState({flag:e.target.value})}/><button type="button" style={{marginLeft:'10px'}} className="btn btn-danger" onClick={()=>this.SubmiFlag()} >Submit</button>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" id='modalClose' data-dismiss="modal">Close</button>

@@ -22,22 +22,25 @@ module.exports = {
             models.session.Get(req.cookies.RBKCTF)
                 .then((result)=>{
                     if(result.length >0 && (result[0].date > Date.now())){
+                        console.log(result)
                         var TeamInfo = {
-                            id : result[0].id ,
+                            Team_id : result[0].Team_id ,
                             name : result[0].name,
                             score : result[0].score,
                             Solved : []
                         }
                         TeamInfo.Solved = result.reduce((challages,row)=>{
+                            
                             challages.push(row.Challange_id)
                             return challages
-                        })
+                        },[])
                         res.status(200).send(TeamInfo)
                     }else{
                         res.status(200).send('Session Login Fail')
                     }
                 })
                 .catch((err)=>{
+                    console.log(err)
                     res.status(500).send('Server Error') 
                 })
         }else{
