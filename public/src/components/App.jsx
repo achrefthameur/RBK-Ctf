@@ -20,10 +20,15 @@ class App extends React.Component {
     render () {
       return (    
       <div >
+        
             <div style={{ position: 'absolute'}}>
+            
               <Particles height="100vh" width="100vw" params={particlesConfig} />
+              
             </div>
-           <Navbar />          
+           <Navbar /> 
+           <ScoarBoard />  
+                  
       </div>)
     }
   }

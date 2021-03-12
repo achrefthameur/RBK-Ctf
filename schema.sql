@@ -22,23 +22,25 @@ CREATE TABLE Challanges (
   points int NOT NULL,
   type varchar(50) NOT NULL,
   PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE teams_challanges(
   id int NOT NULL AUTO_INCREMENT,
   Team_id int NOT NULL ,
   Challange_id int NOT NULL,
+  PRIMARY KEY (id),
   FOREIGN KEY (Team_id) References teams(id),
   FOREIGN KEY (Challange_id) References Challanges(id)
-)
+);
 
 CREATE TABLE sessions(
     id int NOT NULL AUTO_INCREMENT,
     Team_id int NOT NULL ,
     session varchar(250) NOT NULL,
     date varchar(255) NOT NULL,
+    PRIMARY KEY (id),
     FOREIGN KEY (Team_id) References teams(id)
-)
+);
 
 /*  Execute this file from the command line by typing:
  *    mysql -u root < server/schema.sql

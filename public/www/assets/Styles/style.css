@@ -31,3 +31,38 @@ body{
 .navbar-rightCh{
     margin-left: 40%;
 }
+
+#score-Board{
+    position: relative;
+    margin: auto;
+    background-color: rgb(223, 230, 233, 0.2);
+    width: 63%;
+
+    border-radius: 2%;
+}
+
+#score-Board #title{
+    text-align: center;
+    color: rgb(223, 230, 233);
+    margin-bottom: 50px;
+}
+#score-Board #title h1{
+    font-family: 'Courier New', monospace;
+    font-size: 55px;
+    
+}
+#score-Board  table {
+    font-size: 24px;
+    font-weight: 10;
+    margin: auto;
+}
+#score-Board  table thead{
+    background-color: RGB(23, 23, 23,0.8);
+    color:rgb(207, 32, 41);
+    text-align: center;
+}
+
+#score-Board  table tbody{
+    text-align: center;
+    background-color:RGB(23, 23, 23,0.1);
+}
