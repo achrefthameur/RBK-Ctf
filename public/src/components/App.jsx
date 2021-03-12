@@ -26,7 +26,7 @@ class App extends React.Component {
       }else if(view ==  'SignUp'){
         return <SignUp />
       }else if(view ==  'Challanges'){
-         return <Login />
+         return <Challanges />
       }
     }
     ChangeView(view){

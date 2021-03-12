@@ -11,8 +11,8 @@ module.exports={
     },
     Create : (challange)=>{
         return new Promise((resolve,reject)=>{
-            connection.query('INSERT INTO Challanges (Challange_name,Challange_Link,Hint,Flag,points,type) Values(?,?,?,?,?,?)',
-            [challange.Challange_name,challange.Challange_Link,challange.Hint,challange.Flag,challange.points,challange.type],
+            connection.query('INSERT INTO Challanges (Challange_name,Author,Challange_Link,Hint,Flag,points,Difficulty,type) Values(?,?,?,?,?,?,?,?)',
+            [challange.Challange_name,challange.Author,challange.Challange_Link,challange.Hint,challange.Flag,challange.points,challange.Difficulty,challange.type],
             (err,result)=>{
                 if(err) return reject(err)
                 return resolve(result)

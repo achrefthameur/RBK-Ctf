@@ -16,9 +16,11 @@ CREATE TABLE teams (
 CREATE TABLE Challanges (
   id int NOT NULL AUTO_INCREMENT,
   Challange_name varchar(50) NOT NULL,
+  Author varchar(50) NOT NULL,
   Challange_Link varchar(50) NOT NULL,
   Hint varchar(250) NOT NULL,
   Flag varchar(50) NOT NULL,
+  Difficulty varchar(50) NOT NULL,
   points int NOT NULL,
   type varchar(50) NOT NULL,
   PRIMARY KEY (id)
