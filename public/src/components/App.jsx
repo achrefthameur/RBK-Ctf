@@ -15,21 +15,22 @@ class App extends React.Component {
       this.state = { 
           view : 'ScoarBoard',
           user_id:-1,
-          logged:false
+          logged:false,
+          solved:[]
       }
       this.ChangeView = this.ChangeView.bind(this)
     }
 
 
     RenderView(){
-      const { view,user_id } = this.state
-      console.log(view)
+      const { view,user_id,logged,solved } = this.state
+      console.log(solved)
       if(view == 'ScoarBoard'){
         return <ScoarBoard />
       }else if(view ==  'SignUp'){
         return <SignUp />
       }else if(view ==  'Challanges'){
-         return <Challanges user_id={user_id} />
+         return <Challanges user_id={user_id} solved={solved} />
       }else if(view == 'SignIn'){
         return <Login />
       }else if(view == 'logout'){
@@ -54,7 +55,7 @@ class App extends React.Component {
         success:(result)=>{
             console.log(result)
             if(typeof result === 'object'){
-              this.setState({user_id:result.Team_id,logged:true})
+              this.setState({user_id:result.Team_id,logged:true,solved:result.Solved})
             }
         }
       })

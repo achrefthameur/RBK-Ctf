@@ -68,7 +68,7 @@ class Challanges extends React.Component{
                                             <h5 className="card-title text-center title-challange">Author : <span>{challange.Author}</span></h5>
                                             <h5 className="card-title text-center title-challange">Difficulty : <span>{challange.Difficulty}</span></h5>
                                             <h5 className="card-title text-center title-challange">Points : <span>{challange.points}</span></h5>
-                                            
+                                            {(this.props.solved.includes(challange.id)) ? <h5 className='text-center' style={{color:'#27ae60'}}  ><font size="7">&#10004; </font></h5> : <h5 className='text-center' style={{color:'#e74c3c'}}  ><font size="7">&times; </font></h5> }
                                         </div>
                                 </div>
                             </div>:''
@@ -95,7 +95,7 @@ class Challanges extends React.Component{
                                             <h5 className="card-title text-center title-challange">Author : <span>{challange.Author}</span></h5>
                                             <h5 className="card-title text-center title-challange">Difficulty : <span>{challange.Difficulty}</span></h5>
                                             <h5 className="card-title text-center title-challange">Points : <span>{challange.points}</span></h5>
-                                            
+                                            {(this.props.solved.includes(challange.id)) ? <h5 className='text-center' style={{color:'#27ae60'}}  ><font size="7">&#10004; </font></h5> : <h5 className='text-center' style={{color:'#e74c3c'}}  ><font size="7">&times; </font></h5> }
                                         </div>
                                 </div>
                             </div>:''
@@ -122,7 +122,7 @@ class Challanges extends React.Component{
                                             <h5 className="card-title text-center title-challange">Author : <span>{challange.Author}</span></h5>
                                             <h5 className="card-title text-center title-challange">Difficulty : <span>{challange.Difficulty}</span></h5>
                                             <h5 className="card-title text-center title-challange">Points : <span>{challange.points}</span></h5>
-                                            
+                                            {(this.props.solved.includes(challange.id)) ? <h5 className='text-center' style={{color:'#27ae60'}}  ><font size="7">&#10004; </font></h5> : <h5 className='text-center' style={{color:'#e74c3c'}}  ><font size="7">&times; </font></h5> }
                                         </div>
                                 </div>
                             </div>:''
