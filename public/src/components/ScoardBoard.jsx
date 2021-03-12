@@ -21,9 +21,10 @@ class ScoarBoard extends React.Component{
     }
 
     render(){
-        const {TopTeams} = this.state
+        var {TopTeams} = this.state
+        console.log(TopTeams)
         return(
-            <div id='score-Board'>
+            <div className='CompConainer'>
                 <div id='title'>
                     <h1>ScoreBoard</h1>
                 </div>
@@ -36,13 +37,7 @@ class ScoarBoard extends React.Component{
                         </tr>
                     </thead>
                     <tbody>
-                        {TopTeams.map((e,i)=>{
-                            <tr>
-                            <th scope="row">{i}</th>
-                            <td>{e.name}</td>
-                            <td>{e.score}</td>
-                            </tr>
-                        })}
+                        {TopTeams.map((e,i)=><tr key={i} ><th scope="row">{i+1}</th><td>{e.name}</td><td>{e.score}</td></tr>)}
 
                     </tbody>
                     </table>

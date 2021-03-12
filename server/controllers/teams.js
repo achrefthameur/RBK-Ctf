@@ -12,7 +12,9 @@ module.exports = {
                 })
         },
         CreateTeam:(req,res)=>{
-            models.teams.Create(req.body.team,lib.hashUtil.RandomString(32))
+            var salt = lib.hashUtil.RandomString(32);
+            req.body.team.password = lib.hashUtil.createHash(req.body.team.password,salt)
+            models.teams.Create(req.body.team,salt)
                 .then((_)=>{
                     res.status(200).send('Team Created')
                 })
@@ -26,7 +28,6 @@ module.exports = {
                     res.status(200).json(result)
                 })
                 .catch((err)=>{
-                    console.log(err)
                     res.status(500).send('Server Error')
                 })
         }

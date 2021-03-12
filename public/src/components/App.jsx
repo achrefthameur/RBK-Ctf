@@ -12,10 +12,24 @@ class App extends React.Component {
     constructor(props) {
       super(props);
       this.state = { 
-        
+          view : 'ScoarBoard'
       }
+      this.ChangeView = this.ChangeView.bind(this)
     }
 
+
+    RenderView(){
+      const { view } = this.state
+      console.log(view)
+      if(view == 'ScoarBoard'){
+        return <ScoarBoard />
+      }else if(view ==  'SignUp'){
+        return <SignUp />
+      }
+    }
+    ChangeView(view){
+      this.setState({view:view})
+    }
   
     render () {
       return (    
@@ -26,8 +40,8 @@ class App extends React.Component {
               <Particles height="100vh" width="100vw" params={particlesConfig} />
               
             </div>
-           <Navbar /> 
-           <ScoarBoard />  
+           <Navbar ChangeView={this.ChangeView} />
+           {this.RenderView()}
                   
       </div>)
     }

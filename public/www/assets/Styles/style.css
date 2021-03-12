@@ -32,7 +32,7 @@ body{
     margin-left: 40%;
 }
 
-#score-Board{
+.CompConainer{
     position: relative;
     margin: auto;
     background-color: rgb(223, 230, 233, 0.2);
@@ -41,28 +41,89 @@ body{
     border-radius: 2%;
 }
 
-#score-Board #title{
+.CompConainer #title{
     text-align: center;
     color: rgb(223, 230, 233);
     margin-bottom: 50px;
 }
-#score-Board #title h1{
+.CompConainer #title h1{
     font-family: 'Courier New', monospace;
     font-size: 55px;
     
 }
-#score-Board  table {
+.CompConainer  table {
     font-size: 24px;
     font-weight: 10;
     margin: auto;
 }
-#score-Board  table thead{
+.CompConainer  table thead{
     background-color: RGB(23, 23, 23,0.8);
     color:rgb(207, 32, 41);
     text-align: center;
 }
 
-#score-Board  table tbody{
+.CompConainer  table tbody{
     text-align: center;
     background-color:RGB(23, 23, 23,0.1);
 }
+
+.signup-container{
+    margin-top: 3em;
+    padding-bottom: 30px;
+}
+.Form-container{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+
+.input-material {
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: rgb(236, 240, 241,0.2);
+    border-radius: 2%; }
+
+.input-material label {
+    color: #b1bbc4;
+    font-size: 16px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 7px;
+    transition: 0.1s ease all;
+    -moz-transition: 0.1s ease all;
+    -webkit-transition: 0.1s ease all; 
+}
+
+.input-material .form-control {
+    border: none;
+    border-bottom: 2px solid #ced4da;
+    border-radius: 0px;
+    background: transparent;
+    padding-left: 5px;
+    box-shadow: none;
+ }
+.input-material .form-control:focus, .form-control[value]:not([value=""]) {
+    border-bottom-color: rgb(207, 32, 41);
+    color: white; 
+    font-size: 22px;
+    font-weight: 40;
+}
+.input-material .form-control:focus ~ label, .input-material .form-control[value]:not([value=""]) ~ label {
+    top: -25px;
+    font-size: 14px;
+    color: rgb(207, 32, 41);
+    font-weight: 500; 
+}
+.input-material .form-control:focus, .input-material .form-control[value]:not([value=""]) {
+    border-bottom-color: rgb(207, 32, 41);
+    color: white; 
+}
+
+.Form-container button{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
