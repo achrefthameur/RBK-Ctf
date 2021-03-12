@@ -13,6 +13,7 @@ module.exports = {
         },
         CreateTeam:(req,res)=>{
             var salt = lib.hashUtil.RandomString(32);
+            console.log(lib.hashUtil)
             req.body.team.password = lib.hashUtil.createHash(req.body.team.password,salt)
             models.teams.Create(req.body.team,salt)
                 .then((_)=>{

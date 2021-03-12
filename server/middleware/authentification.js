@@ -10,9 +10,10 @@ module.exports = {
                         httpOnly: false, 
                         secure: false
                     })
-                    res.status(200).redirect('/')
+                    res.status(200).send('success')
                 })
                 .catch((err)=>{
+                    console.log(err)
                     res.status(500).send('Server Error')
                 })
     },

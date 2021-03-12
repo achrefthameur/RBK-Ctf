@@ -25,6 +25,8 @@ class App extends React.Component {
         return <ScoarBoard />
       }else if(view ==  'SignUp'){
         return <SignUp />
+      }else if(view ==  'Challanges'){
+         return <Login />
       }
     }
     ChangeView(view){

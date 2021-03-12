@@ -17,7 +17,7 @@ class Navbar extends React.Component{
                         <a className="nav-link NavBar-item"  href="#" onClick={()=>ChangeView('ScoarBoard')}>ScoreBoard <span className="sr-only">(current)</span></a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link NavBar-item" href="#" onClick={()=>ChangeView('ScoarBoard')} >Challanges</a>
+                        <a className="nav-link NavBar-item" href="#" onClick={()=>ChangeView('Challanges')} >Challanges</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link NavBar-item" href="#" onClick={()=>ChangeView('SignUp')} >Register</a>
