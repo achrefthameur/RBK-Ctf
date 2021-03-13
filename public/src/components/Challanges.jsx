@@ -91,7 +91,7 @@ class Challanges extends React.Component{
                     <div className="Challanges-cards container">
                         <div className="row">
                             {challanges.map((challange,i)=>{
-                               return (challange.type == 'Web') ?    <div className="col-sm Challange-card" onClick={()=>this.ChallangePopUp(challange)} key={i} >
+                               return (challange.type == 'Web') ?    <div className="col-sm Challange-card" onClick={(e)=>this.ChallangePopUp(challange,e)} key={i} >
                                 <div className="card">
                                         <h5 className="card-header text-center Card-challange-header">{challange.Challange_name}</h5>
                                         <div className="card-body">
@@ -99,7 +99,7 @@ class Challanges extends React.Component{
                                             <h5 className="card-title text-center title-challange">Difficulty : <span>{challange.Difficulty}</span></h5>
                                             <h5 className="card-title text-center title-challange">Points : <span>{challange.points}</span></h5>
                                             {(this.props.solved.includes(challange.id)) ? <h5 className='text-center' style={{color:'#27ae60'}}  ><font size="7">&#10004; </font></h5> : <h5 className='text-center' style={{color:'#e74c3c'}}  ><font size="7">&times; </font></h5> }
-                                            {(this.props.user_id == 2)?<div className='text-center' ><button type='button' className='btn btn-danger' id='deleteChallange'  >Delete</button></div> : ''}                                        </div>
+                                            {(this.props.user_id == 1)?<div className='text-center' ><button type='button' className='btn btn-danger' id='deleteChallange'  >Delete</button></div> : ''}                                        </div>
                                 </div>
                             </div>:''
  
@@ -126,7 +126,7 @@ class Challanges extends React.Component{
                                             <h5 className="card-title text-center title-challange">Difficulty : <span>{challange.Difficulty}</span></h5>
                                             <h5 className="card-title text-center title-challange">Points : <span>{challange.points}</span></h5>
                                             {(this.props.solved.includes(challange.id)) ? <h5 className='text-center' style={{color:'#27ae60'}}  ><font size="7">&#10004; </font></h5> : <h5 className='text-center' style={{color:'#e74c3c'}}  ><font size="7">&times; </font></h5> }
-                                            {(this.props.user_id == 2)?<div className='text-center' ><button type='button' className='btn btn-danger' id='deleteChallange' onClick={()=>this.DeleteChallange(challange.id)} >Delete</button></div> : ''}
+                                            {(this.props.user_id == 1)?<div className='text-center' ><button type='button' className='btn btn-danger' id='deleteChallange' onClick={()=>this.DeleteChallange(challange.id)} >Delete</button></div> : ''}
                                         </div>
                                 </div>
                             </div>:''
@@ -146,7 +146,7 @@ class Challanges extends React.Component{
                     <div className="Challanges-cards container">
                         <div className="row">
                             {challanges.map((challange,i)=>{
-                               return (challange.type == 'Forensic') ?    <div className="col-sm Challange-card" onClick={()=>this.ChallangePopUp(challange)} key={i}>
+                               return (challange.type == 'Forensic') ?    <div className="col-sm Challange-card" onClick={(e)=>this.ChallangePopUp(challange,e)} key={i}>
                                 <div className="card">
                                         <h5 className="card-header text-center Card-challange-header">{challange.Challange_name}</h5>
                                         <div className="card-body">
@@ -154,7 +154,7 @@ class Challanges extends React.Component{
                                             <h5 className="card-title text-center title-challange">Difficulty : <span>{challange.Difficulty}</span></h5>
                                             <h5 className="card-title text-center title-challange">Points : <span>{challange.points}</span></h5>
                                             {(this.props.solved.includes(challange.id)) ? <h5 className='text-center' style={{color:'#27ae60'}}  ><font size="7">&#10004; </font></h5> : <h5 className='text-center' style={{color:'#e74c3c'}}  ><font size="7">&times; </font></h5> }
-                                            {(this.props.user_id == 2)?<div className='text-center' ><button type='button' className='btn btn-danger' id='deleteChallange'  >Delete</button></div> : ''}                                        </div>
+                                            {(this.props.user_id == 1)?<div className='text-center' ><button type='button' className='btn btn-danger' id='deleteChallange'  >Delete</button></div> : ''}                                        </div>
                                 </div>
                             </div>:''
  

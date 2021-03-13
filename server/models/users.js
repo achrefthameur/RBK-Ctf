@@ -26,7 +26,7 @@ module.exports={
             connection.query('select * from users ORDER BY score DESC',
             (err,result)=>{
                 if(err) return reject(err)
-                resolve(result.slice(0,10))
+                resolve(result.slice(0,5))
             })
         })
     },
