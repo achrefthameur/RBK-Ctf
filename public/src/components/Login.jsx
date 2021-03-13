@@ -36,7 +36,7 @@ class Login extends React.Component{
         if(this.state.alert == 'success'){
             alert = <div className="alert alert-success" role="alert" >Sign In Successfully ...</div>
         }else if(this.state.alert == "fail"){
-            alert = <div className="alert alert-danger" role="alert" > Wrong Password Or Name </div>
+            alert = <div className="alert alert-danger" role="alert" > Wrong Password Or Username </div>
         }
         return(
             <div className='CompConainer signup-container'>

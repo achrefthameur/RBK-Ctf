@@ -1,10 +1,10 @@
 var connection = require('../database')
 
 module.exports={
-    GetOne:(username)=>{
+    GetOne:(id,username)=>{
         return new Promise((resolve,reject)=>{
-            connection.query('select * from users where username=?',
-            [username],
+            connection.query('select * from users where username=? or id=?',
+            [username,id],
             (err,result)=>{
                 if(err) return reject(err)
                 return resolve(result)

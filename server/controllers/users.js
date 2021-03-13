@@ -3,18 +3,25 @@ const lib = require('../lib')
 
 module.exports = {
         GetUser:(req,res)=>{
-            models.users.GetOne(req.body.username)
+            models.users.GetOne(req.params.id,'')
                 .then((result)=>{
-                    res.status(200).send(result)
+                    var NeededInfo = {
+                        id:result[0].id,
+                        name : result[0].name,
+                        Lastname : result[0].Lastname,
+                        email : result[0].email,
+                        score : result[0].score
+                    }
+                    res.status(200).send(NeededInfo)
                 })
                 .catch((err)=>{
                     res.status(500).send('Server Error')
                 })
         },
         CreateUser:(req,res)=>{
-            models.users.GetOne(req.body.user.username)
+            models.users.GetOne('',req.body.user.username)
                 .then((result)=>{
-                    if(result.length == 0){
+                    if(result.length == 0 && req.body.user.username != ''){
                         var salt = lib.hashUtil.RandomString(32);
                         req.body.user.password = lib.hashUtil.createHash(req.body.user.password,salt)
                         models.users.Create(req.body.user,salt)

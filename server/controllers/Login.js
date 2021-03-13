@@ -6,7 +6,7 @@ module.exports = {
     login:(req,res)=>{
         var username = req.body.user.username
         var password = req.body.user.password
-        models.users.GetOne(username)
+        models.users.GetOne('',username)
             .then((UserRow)=>{
                 if(UserRow.length > 0  && utils.hashUtil.HashComparer(password,UserRow[0].password,UserRow[0].salt)){
                     var session = utils.hashUtil.RandomString(32)

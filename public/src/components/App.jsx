@@ -8,6 +8,7 @@ import Login from './Login.jsx';
 import SignUp from './SignUp.jsx';
 import ScoarBoard from './ScoardBoard.jsx';
 import Challanges from './Challanges.jsx'
+import Profile from './Profile.jsx'
 
 class App extends React.Component {
     constructor(props) {
@@ -32,6 +33,8 @@ class App extends React.Component {
          return <Challanges user_id={user_id} solved={solved} />
       }else if(view == 'SignIn'){
         return <Login />
+      }else if(view == 'Profile'){
+        return <Profile user_id={user_id} />
       }else if(view == 'logout'){
         $.ajax({
           url:'/api/logout',

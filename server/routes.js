@@ -9,7 +9,7 @@ router.get('/api/logout',controller.Login.logout)
 
 
 router.get('/api/scoardBoard',controller.users.GetTop);
-
+router.get('/api/user/:id',controller.users.GetUser)
 
 router.get('/api/challanges',controller.challanges.Get);
 router.post('/api/challanges',controller.challanges.Post);
