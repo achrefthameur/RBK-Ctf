@@ -11,6 +11,8 @@ class Challanges extends React.Component{
         }
     }
     ChallangePopUp(challange){
+        $("#popupalertsuccess").hide()
+        $("#submitFlagIn").show()
         this.setState({challange_id:challange.id})
         $('#TitlePopUp').html(challange.Challange_name)
         $('#challangeHint').html(challange.Hint)
@@ -19,6 +21,10 @@ class Challanges extends React.Component{
         $('#challangeAuthor').html(challange.Author)
         
         $("#Challalink").attr("href",challange.Challange_Link)
+        if(this.props.solved.includes(challange.id)){
+            $("#popupalertsuccess").show()
+            $("#submitFlagIn").hide()
+        }
         $('#ModalPop').modal('show');
     }
     SubmiFlag(){
@@ -28,14 +34,21 @@ class Challanges extends React.Component{
             url:'/api/solve',
             type:'POST',
             contentType:'application/json',
-            data:JSON.stringify({team_id:user_id,challange_id:challange_id,Flag:flag}),
+            data:JSON.stringify({user_id:user_id,challange_id:challange_id,Flag:flag}),
             success:(result)=>{
-                    console.log(result)
+                $("#popupalertdanger").hide()
+                if(result.includes('Correct')){
+                    $("#popupalertsuccess").show()
+                    $("#submitFlagIn").hide()
+                    this.fetchChalanges()
+                }else{
+                    $("#popupalertdanger").show()
+                }
+                
             }
         })
     }
-
-    componentDidMount(){
+    fetchChalanges(){
         $.ajax({
             url:'api/challanges',
             type:'GET',
@@ -44,6 +57,9 @@ class Challanges extends React.Component{
                 this.setState({challanges:challanges})
             }
         })
+    }
+    componentDidMount(){
+        this.fetchChalanges()
     }
 
     render(){
@@ -149,8 +165,14 @@ class Challanges extends React.Component{
                                 Difficulty : <span id='challangeDifficulty'></span><br />
                                  
                                 Author  : <span id='challangeAuthor'></span><br />
-                                <div style={{marginLeft:'35%',fontSize:'22px',color:'white'}}><span id='challangepoints'  ></span> Points </div>
-                                <input placeholder="FlAG_H3r3" id='FlagInput' onChange={(e)=>this.setState({flag:e.target.value})}/><button type="button" style={{marginLeft:'10px'}} className="btn btn-danger" onClick={()=>this.SubmiFlag()} >Submit</button>
+                                <div style={{marginLeft:'40%',fontSize:'22px',color:'white'}}><span id='challangepoints'  ></span> Points </div>
+                                <div id="submitFlagIn"><input placeholder="FlAG_H3r3" id='FlagInput' onChange={(e)=>this.setState({flag:e.target.value})}/><button type="button" style={{marginLeft:'10px'}} className="btn btn-danger" onClick={()=>this.SubmiFlag()} >Submit</button></div>
+                                <div className="alert alert-success text-center" id="popupalertsuccess" style={{display:'none'}} role="alert">
+                                    Correct FlAG :-)
+                                </div>
+                                <div className="alert alert-danger text-center" id="popupalertdanger" style={{display:'none'}} role="alert">
+                                    Wrong -_-
+                                </div>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" id='modalClose' data-dismiss="modal">Close</button>

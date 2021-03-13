@@ -24,7 +24,6 @@ class App extends React.Component {
 
     RenderView(){
       const { view,user_id,logged,solved } = this.state
-      console.log(solved)
       if(view == 'ScoarBoard'){
         return <ScoarBoard />
       }else if(view ==  'SignUp'){
@@ -53,9 +52,16 @@ class App extends React.Component {
         type:'GET',
         contentType:'application/json',
         success:(result)=>{
-            console.log(result)
             if(typeof result === 'object'){
-              this.setState({user_id:result.Team_id,logged:true,solved:result.Solved})
+              this.setState({user_id:result.user_id,logged:true})
+              $.ajax({
+                url:'/api/solve/'+result.user_id,
+                type:'GET',
+                contentType:'application/json',
+                success:(result)=>{
+                      this.setState({solved:result})
+                }
+              })
             }
         }
       })

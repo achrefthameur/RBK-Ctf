@@ -5,19 +5,19 @@ class Login extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            Teamname:'',
-            Teampassword:'',
+            username:'',
+            password:'',
             alert:''
         }
     }
     HandleLogin(){
-        const {Teamname,Teampassword} = this.state
+        const {username,password} = this.state
         
        $.ajax({
             url:'/api/login',
             type:'POST',
             contentType:'application/json',
-            data:JSON.stringify({team:{name:Teamname,password:Teampassword}}),
+            data:JSON.stringify({user:{username:username,password:password}}),
             success:(result)=>{
                 if(String(result).includes('success')){
                     this.setState({alert:'success'})
@@ -47,11 +47,11 @@ class Login extends React.Component{
                 <div className='Form-container '>
 
                     <div className=" input-material">
-                        <input type="text" className="form-control" id="name-field" value={this.state.Teamname} onChange={(e)=>this.setState({Teamname:e.target.value})} required ></input>
-                        <label htmlFor="name-field">Team Name</label>
+                        <input type="text" className="form-control" id="name-field" value={this.state.username} onChange={(e)=>this.setState({username:e.target.value})} required ></input>
+                        <label htmlFor="name-field">UserName</label>
                     </div>
                     <div className=" input-material">
-                        <input type="password" className="form-control" id="name-field" value={this.state.Teampassword} onChange={(e)=>this.setState({Teampassword:e.target.value})} required ></input>
+                        <input type="password" className="form-control" id="name-field" value={this.state.password} onChange={(e)=>this.setState({password:e.target.value})} required ></input>
                         <label htmlFor="name-field">Password</label>
                     </div>
                     <button type='button' className='btn btn-danger' onClick={()=>this.HandleLogin()}>Log In</button>

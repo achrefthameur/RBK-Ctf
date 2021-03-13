@@ -4,13 +4,13 @@ const middleware = require('../middleware');
 
 module.exports = {
     login:(req,res)=>{
-        var teamName = req.body.team.name
-        var password = req.body.team.password
-        models.teams.GetOne(teamName)
-            .then((TeamRow)=>{
-                if(TeamRow.length > 0  && utils.hashUtil.HashComparer(password,TeamRow[0].password,TeamRow[0].salt)){
+        var username = req.body.user.username
+        var password = req.body.user.password
+        models.users.GetOne(username)
+            .then((UserRow)=>{
+                if(UserRow.length > 0  && utils.hashUtil.HashComparer(password,UserRow[0].password,UserRow[0].salt)){
                     var session = utils.hashUtil.RandomString(32)
-                    middleware.authentification.CreateSession(req,res,TeamRow[0].id,session)
+                    middleware.authentification.CreateSession(req,res,UserRow[0].id,session)
                 }else{
                     res.status(200).send('Login fail')
                 }

@@ -8,7 +8,6 @@ class Navbar extends React.Component{
 
     render(){
         const {ChangeView,logged} = this.props
-        console.log(logged)
         if (logged){
             return(
                 <nav className="navbar navbar-expand-lg Nav-Container">

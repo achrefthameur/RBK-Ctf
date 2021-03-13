@@ -4,9 +4,12 @@ CREATE DATABASE Ctf_Rbk;
 
 USE Ctf_Rbk;
 
-CREATE TABLE teams (
+CREATE TABLE users (
   id int NOT NULL AUTO_INCREMENT,
-  name varchar(50) NOT NULL,
+  name varchar(50) ,
+  Lastname varchar(50) ,
+  email varchar(50) ,
+  username varchar(50) NOT NULL,
   password varchar(250) NOT NULL,
   score int NOT NULL Default 0,
   salt varchar(250) NOT NULL,
@@ -26,22 +29,22 @@ CREATE TABLE Challanges (
   PRIMARY KEY (id)
 );
 
-CREATE TABLE teams_challanges(
+CREATE TABLE users_challanges(
   id int NOT NULL AUTO_INCREMENT,
-  Team_id int NOT NULL ,
+  user_id int NOT NULL ,
   Challange_id int NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (Team_id) References teams(id),
+  FOREIGN KEY (user_id) References users(id),
   FOREIGN KEY (Challange_id) References Challanges(id)
 );
 
 CREATE TABLE sessions(
     id int NOT NULL AUTO_INCREMENT,
-    Team_id int NOT NULL ,
+    user_id int NOT NULL ,
     session varchar(250) NOT NULL,
     date varchar(255) NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (Team_id) References teams(id)
+    FOREIGN KEY (user_id) References users(id)
 );
 
 /*  Execute this file from the command line by typing:

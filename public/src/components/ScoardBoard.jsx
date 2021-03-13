@@ -5,7 +5,7 @@ class ScoarBoard extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            TopTeams : []
+            TopUsers : []
         }
     }
     componentDidMount(){
@@ -13,15 +13,15 @@ class ScoarBoard extends React.Component{
             url:'/api/scoardBoard',
             type:'GET',
             contentType:'application/json',
-            success:(teams)=>{
-                this.setState({TopTeams:teams})
+            success:(users)=>{
+                this.setState({TopUsers:users})
             }
         })
     }
 
     render(){
-        var {TopTeams} = this.state
-        console.log(TopTeams)
+        var {TopUsers} = this.state
+        console.log(TopUsers)
         return(
             <div className='CompConainer'>
                 <div id='title'>
@@ -31,12 +31,12 @@ class ScoarBoard extends React.Component{
                     <thead>
                         <tr>
                         <th scope="col">#</th>
-                        <th scope="col">team</th>
+                        <th scope="col">user</th>
                         <th scope="col">score</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {TopTeams.map((e,i)=><tr key={i} ><th scope="row">{i+1}</th><td>{e.name}</td><td>{e.score}</td></tr>)}
+                        {TopUsers.map((e,i)=><tr key={i} ><th scope="row">{i+1}</th><td>{e.username}</td><td>{e.score}</td></tr>)}
 
                     </tbody>
                     </table>
