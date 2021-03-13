@@ -39,5 +39,15 @@ module.exports={
                 resolve(result)
             })
         })
+    },
+    Update:(id,user)=>{
+        return new Promise((resolve,reject)=>{
+            connection.query('update users SET name=?,Lastname=?,email=? where id=?',
+            [user.name,user.Lastname,user.email,id],
+            (err,result)=>{
+                if(err) return reject(err)
+                resolve(result)
+            })
+        })
     }
 }

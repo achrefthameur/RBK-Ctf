@@ -58,5 +58,15 @@ module.exports = {
                 .catch((err)=>{
                     res.status(500).send('Server Error')
                 })
+        },
+        UpdateUser:(req,res)=>{
+            models.users.Update(req.params.id,req.body.user)
+                .then((result)=>{
+                    console.log(req.params.id)
+                    res.status(200).send('user Updated')
+                })
+                .catch((err)=>{
+                    res.status(500).send('Server Error')
+                })
         }
 }

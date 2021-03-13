@@ -8,18 +8,17 @@ class Settings extends React.Component{
                 name:'',
                 lastname:'',
                 email:'',
-                NewPassword :'',
                 alert:''
             }
         }
         HandleUpdate(){
-            const {NewPassword,name,lastname,email} = this.state
+            const {name,lastname,email} = this.state
             
            $.ajax({
                 url:'/api/user/'+this.props.user_id,
                 type:'PATCH',
                 contentType:'application/json',
-                data:JSON.stringify({user:{password:NewPassword,name:name,lastname:lastname,email:email}}),
+                data:JSON.stringify({user:{name:name,Lastname:lastname,email:email}}),
                 success:(result)=>{
                     if(String(result).includes('user Updated')){
                         this.setState({alert:'success'})
@@ -47,12 +46,12 @@ class Settings extends React.Component{
             if(this.state.alert == 'success'){
                 alert = <div className="alert alert-success" role="alert" >Changed Successfully ...</div>
             }else if(this.state.alert == "fail"){
-                alert = <div className="alert alert-danger" role="alert" >Wrong Password </div>
+                alert = <div className="alert alert-danger" role="alert" >Server Error</div>
             }
             return(
                 <div className='CompConainer signup-container'>
                     <div id='title'>
-                        <h1>Register</h1>
+                        <h1>Settings</h1>
                     </div>
     
                     <div className='Form-container '>
@@ -71,11 +70,6 @@ class Settings extends React.Component{
                             <label htmlFor="email-field">Email</label>
                         </div>
     
-    
-                        <div className=" input-material">
-                            <input type="password" className="form-control" id="name-field" value={this.state.NewPassword} onChange={(e)=>this.setState({NewPassword:e.target.value})} required ></input>
-                            <label htmlFor="name-field">Current Password</label>
-                        </div>
                         <button type='button' className='btn btn-danger' onClick={()=>this.HandleUpdate()}>Change</button>
                         {alert}
                     </div>
