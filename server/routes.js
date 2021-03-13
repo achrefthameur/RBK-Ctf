@@ -12,11 +12,12 @@ router.get('/api/scoardBoard',controller.users.GetTop);
 router.get('/api/user/:id',controller.users.GetUser)
 router.patch('/api/user/:id',controller.users.UpdateUser)
 
+
 router.get('/api/challanges',controller.challanges.Get);
 router.post('/api/challanges',controller.challanges.Post);
 router.get('/api/solve/:id',controller.solvers.Get)
 router.post('/api/solve',controller.solvers.Create)
-
+router.delete('/api/challange/:id',controller.challanges.delete)
 
 router.get('/api/session',middleware.authentification.VerifySession)
 router.get('/admin',middleware.authentification.VerifyAdminSession)

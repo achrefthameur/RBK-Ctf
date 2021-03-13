@@ -28,5 +28,15 @@ module.exports={
                 return resolve(result) 
             })
         })
+    },
+    delete:(id)=>{
+        return new Promise((resolve,reject)=>{
+            connection.query('delete from Challanges where id=?',
+            [id],
+            (err,result)=>{
+                if(err) return reject(err)
+                return resolve(result) 
+            })
+        })
     }
 }
