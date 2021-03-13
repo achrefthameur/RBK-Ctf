@@ -9,6 +9,7 @@ import SignUp from './SignUp.jsx';
 import ScoarBoard from './ScoardBoard.jsx';
 import Challanges from './Challanges.jsx'
 import Profile from './Profile.jsx'
+import Settings from './Settings.jsx'
 
 class App extends React.Component {
     constructor(props) {
@@ -35,6 +36,8 @@ class App extends React.Component {
         return <Login />
       }else if(view == 'Profile'){
         return <Profile user_id={user_id} />
+      }else if(view == 'Settings'){
+        return <Settings user_id={user_id} />
       }else if(view == 'logout'){
         $.ajax({
           url:'/api/logout',
